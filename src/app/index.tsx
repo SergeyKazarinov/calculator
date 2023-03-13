@@ -1,4 +1,4 @@
-import Loader from 'UI/Loader';
+import { Loader } from 'UI';
 import './index.scss';
 import { Suspense, lazy } from 'react';
 

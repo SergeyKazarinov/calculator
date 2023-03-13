@@ -6,6 +6,8 @@ interface IButtonProps {
   type: 'digits' | 'zero' | 'operand' | 'equals';
 }
 
-const Button: FC<IButtonProps> = ({ type, title }) => <button className={`${s.button} ${s[type]}`}>{title}</button>;
+const Button: FC<IButtonProps> = ({ type, title }) => (
+  <button className={`button ${s.button} ${s[type]}`}>{title}</button>
+);
 
 export default Button;

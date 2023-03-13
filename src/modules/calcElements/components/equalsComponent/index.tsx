@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Button from 'UI/Button';
+import { Button } from 'UI';
 import s from './styles.module.scss';
 
 interface IEqualsComponentProps {}
