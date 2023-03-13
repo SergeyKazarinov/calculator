@@ -3,9 +3,9 @@ import Button from 'UI/Button';
 import digits from 'modules/calcElements/utils/constants';
 import s from './styles.module.scss';
 
-interface IDigitKeyboardProps {}
+interface IDigitKeyboardComponentProps {}
 
-const DigitKeyboard: FC<IDigitKeyboardProps> = () => {
+const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = () => {
   const buttons = digits.map((item, index) => (
     <>
       {item === 0 ? <Button key={index} type="zero" title={item} /> : <Button key={index} type="digits" title={item} />}
@@ -15,4 +15,4 @@ const DigitKeyboard: FC<IDigitKeyboardProps> = () => {
   return <div className={`${s.keyboard} ${s.grid}`}>{buttons}</div>;
 };
 
-export default DigitKeyboard;
+export default DigitKeyboardComponent;
