@@ -4,11 +4,13 @@
         "es2021": true
     },
     "extends": [
+        "plugin:prettier/recommended",
         "airbnb-base",
         "airbnb-typescript/base"
     ],
     "overrides": [
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
@@ -16,20 +18,23 @@
     },
     "plugins": [
         "react",
-        "import"
+        "import",
+        "prettier"
     ],
     "rules": {
-        "import/no-unresolved": "error"
+        "import/no-unresolved": "error",
+        "import/prefer-default-export": [
+            "warn",
+            { "target": "single" }
+        ],
+        "linebreak-style": 0
     },
     "settings": {
         "import/parsers": {
             "@typescript-eslint/parser": [".ts", ".tsx"]
         },
         "import/resolver": {
-            "typescript": {
-            "alwaysTryTypes": true,
-            "project": "./tsconfig.json"
-        }
+            "typescript": {}
         }
     }
 }

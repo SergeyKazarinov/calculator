@@ -1,0 +1,20 @@
+.button {
+  background: #FFFFFF;
+  border: 1px solid #E2E3E5;
+  border-radius: 6px;
+  height: 100%;
+  width: 100%;
+
+  &:hover {
+    border: 2px solid #5D5FEF;
+  }
+
+  &:active {
+    background: #5D5FEF;
+    color: #fff;
+  }
+}
+
+.zero {
+  grid-column: 1/3;
+}

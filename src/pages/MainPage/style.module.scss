@@ -1,0 +1,8 @@
+.mainGrid {
+  padding: 38px 80px 86px 76px;
+  display: grid;
+  grid-template-columns: 240px 243px;
+  grid-template-rows: repeat(2, auto);
+  grid-column-gap: 56px;
+  grid-row-gap: 31px;
+}
