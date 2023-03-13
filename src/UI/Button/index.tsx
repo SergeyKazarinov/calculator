@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import s from './Button.module.scss';
+import s from './styles.module.scss';
 
 interface IButtonProps {
   title: string | number;
