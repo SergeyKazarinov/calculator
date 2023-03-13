@@ -1,6 +1,10 @@
 @import "./styles/normalize.scss";
 @import "./vendor/fonts.css";
 
+:root {
+  --color-purple: #5D5FEF;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', 'Helvetica Neue',

@@ -3,6 +3,7 @@ import s from './styles.module.scss';
 import DisplayComponent from '../displayComponent';
 import DigitKeyboardComponent from '../digitKeyboardComponent';
 import OperandComponent from '../operandComponent';
+import EqualsComponent from '../equalsComponent';
 
 interface CalcElementsProps {}
 
@@ -11,6 +12,7 @@ const CalcElements: FC<CalcElementsProps> = () => (
     <DisplayComponent />
     <OperandComponent />
     <DigitKeyboardComponent />
+    <EqualsComponent />
   </div>
 );
 
