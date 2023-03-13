@@ -3,7 +3,7 @@ import s from './styles.module.scss';
 
 interface IButtonProps {
   title: string | number;
-  type: 'digits' | 'zero';
+  type: 'digits' | 'zero' | 'operand';
 }
 
 const Button: FC<IButtonProps> = ({ type, title }) => <button className={`${s.button} ${s[type]}`}>{title}</button>;

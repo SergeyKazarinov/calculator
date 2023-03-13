@@ -1,0 +1,8 @@
+@import '../../styles/mixins.module.scss';
+
+.container {
+  @include calc-element;
+  display: flex;
+  gap: 8px;
+  height: 48px;
+}
