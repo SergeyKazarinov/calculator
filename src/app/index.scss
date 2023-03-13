@@ -1,13 +1,12 @@
-@import "./styles/normalize.scss";
-@import "./vendor/fonts.css";
+@import './styles/normalize.scss';
+@import './vendor/fonts.css';
 
 :root {
-  --color-purple: #5D5FEF;
+  --color-purple: #5d5fef;
 }
 
 body {
-  font-family: 'Inter', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -16,7 +15,6 @@ body {
   margin: 0 auto;
   box-sizing: border-box;
 }
-
 
 .list {
   padding: 0;
@@ -39,12 +37,17 @@ body {
 .button {
   cursor: pointer;
   padding: 0;
-  border: none;
-  background-color: #00000000;
   transition: 0.3s;
 }
 
 .button:hover {
   opacity: 0.8;
   transition: 0.3s;
+}
+
+.title {
+  padding: 0;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }

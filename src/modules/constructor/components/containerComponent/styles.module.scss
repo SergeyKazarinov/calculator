@@ -1,0 +1,26 @@
+.container {
+  border: 2px dashed #c4c4c4;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 12px;
+  color: var(--color-purple);
+}
+
+.subtitle {
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  width: 106px;
+  margin-top: 4px;
+  text-align: center;
+}

@@ -1,14 +1,9 @@
-import { Loader } from 'UI';
 import './index.scss';
-import { Suspense, lazy } from 'react';
-
-const MainPage = lazy(() => import('pages/MainPage'));
+import Routing from 'pages';
 
 const App = () => (
   <main>
-    <Suspense fallback={<Loader />}>
-      <MainPage />
-    </Suspense>
+    <Routing />
   </main>
 );
 
