@@ -8,9 +8,7 @@ interface IButtonProps {
 }
 
 const Button: FC<IButtonProps> = ({ type, title, disabled }) => (
-  <button disabled={disabled} className={`button ${s.button} ${s[type]} ${!disabled && s.button_active}`}>
-    {title}
-  </button>
+  <button className={`button ${s.button} ${s[type]} ${!disabled && s.button_active}`}>{title}</button>
 );
 
 export default Button;
