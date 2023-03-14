@@ -1,9 +1,9 @@
 import { Loader } from 'UI';
 import { FC, Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import PageNotFound from './PageNotFound';
 
 const MainPage = lazy(() => import('./MainPage'));
+const PageNotFound = lazy(() => import('./PageNotFound'));
 
 const Routing: FC = () => (
   <Suspense fallback={<Loader />}>

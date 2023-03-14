@@ -7,7 +7,7 @@ interface IOperandComponentProps {}
 
 const OperandComponent: FC<IOperandComponentProps> = () => {
   const buttons = useMemo(
-    () => OPERANDS.map((item, index) => <Button key={index} type="operand" title={item} disabled={true} />),
+    () => OPERANDS.map((item, index) => <Button key={index} type="operand" title={item} />),
     [OPERANDS],
   );
 

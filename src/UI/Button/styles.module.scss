@@ -1,20 +1,29 @@
 .button {
-  background: #FFFFFF;
-  border: 1px solid #E2E3E5;
+  background: #ffffff;
+  border: 1px solid #e2e3e5;
   border-radius: 6px;
   height: 100%;
   width: 100%;
   font-weight: 500;
   font-size: 14px;
   line-height: 15px;
+  cursor: auto;
 
-  &:hover {
-    border: 2px solid var(--color-purple);
+  &:disabled {
+    color: #000;
+    border: 1px solid #e2e3e5;
   }
 
-  &:active {
-    background: var(--color-purple);
-    color: #fff;
+  &_active {
+    cursor: pointer;
+    &:hover {
+      border: 2px solid var(--color-purple);
+    }
+
+    &:active {
+      background: var(--color-purple);
+      color: #fff;
+    }
   }
 }
 
@@ -25,4 +34,8 @@
 .equals {
   background-color: var(--color-purple);
   color: #fff;
+
+  &:disabled {
+    color: #fff;
+  }
 }
