@@ -3,4 +3,8 @@
 .container {
   @include calc-element;
   height: 72px;
+
+  &_inactive {
+    opacity: 0.5;
+  }
 }

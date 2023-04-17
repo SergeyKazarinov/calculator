@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { DIGITS } from 'modules/calcElements/utils/constants';
 import { Button } from 'UI';
 import { useDrag } from 'react-dnd';
+import CalcElementsEnum from 'types/calcElementsEnum';
 import s from './styles.module.scss';
 
 interface IDigitKeyboardComponentProps {}
@@ -9,7 +10,7 @@ interface IDigitKeyboardComponentProps {}
 const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = () => {
   const [, dragRef] = useDrag({
     type: 'calcElement',
-    item: { id: 'digits' },
+    item: { id: CalcElementsEnum.DIGITS },
     collect: (monitor) => ({
       isDrag: monitor.isDragging(),
     }),
@@ -19,7 +20,7 @@ const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = () => {
     item === 0 ? (
       <Button key={index} type="zero" title={item} disabled={true} />
     ) : (
-      <Button key={index} type="digits" title={item} disabled={true} />
+      <Button key={index} type={CalcElementsEnum.DIGITS} title={item} disabled={true} />
     ),
   );
 

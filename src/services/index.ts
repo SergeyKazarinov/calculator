@@ -1,0 +1,18 @@
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook , useSelector , useDispatch } from 'react-redux';
+import calcElementsSlice from './slices/calcElementsSlice';
+
+const rootReducer = combineReducers({
+  calcElmts: calcElementsSlice,
+});
+
+export const store = configureStore({
+  reducer: rootReducer
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useAppDispatch: () => AppDispatch = useDispatch;
+

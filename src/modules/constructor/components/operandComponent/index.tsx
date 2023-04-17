@@ -1,16 +1,19 @@
 import { FC, useMemo } from 'react';
 import { OPERANDS } from 'modules/calcElements/utils/constants';
 import { Button } from 'UI';
+import CalcElementsEnum from 'types/calcElementsEnum';
 import s from './styles.module.scss';
 
-interface IOperandComponentProps {}
+interface IOperandComponentProps {
+  onDoubleClick: (type: string) => void;
+}
 
-const OperandComponent: FC<IOperandComponentProps> = () => {
+const OperandComponent: FC<IOperandComponentProps> = ({onDoubleClick}) => {
   const buttons = useMemo(
-    () => OPERANDS.map((item, index) => <Button key={index} type="operand" title={item} />),
+    () => OPERANDS.map((item, index) => <Button key={index} type={CalcElementsEnum.OPERAND} title={item} disabled={true}/>),
     [OPERANDS],
   );
 
-  return <div className={s.container}>{buttons}</div>;
+  return <div className={s.container} onDoubleClick={() => onDoubleClick(CalcElementsEnum.OPERAND)}>{buttons}</div>;
 };
 export default OperandComponent;

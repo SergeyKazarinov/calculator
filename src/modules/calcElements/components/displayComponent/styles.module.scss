@@ -4,6 +4,10 @@
   @include calc-element;
   height: 60px;
   box-sizing: border-box;
+
+  &_inactive {
+    opacity: 0.5;
+  }
 }
 
 .display {
