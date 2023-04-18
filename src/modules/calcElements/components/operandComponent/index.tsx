@@ -3,11 +3,14 @@ import { OPERANDS } from 'modules/calcElements/utils/constants';
 import { Button } from 'UI';
 import { useDrag } from 'react-dnd';
 import CalcElementsEnum from 'types/calcElementsEnum';
+import { useAppSelector } from 'services';
 import s from './styles.module.scss';
 
 interface IOperandComponentProps {}
 
 const OperandComponent: FC<IOperandComponentProps> = () => {
+  const calcElements = useAppSelector(store => store.calcElmts.calcElements);
+  const isOperand = calcElements.some(item => item === CalcElementsEnum.OPERAND);
   const [, dragRef] = useDrag({
     type: 'calcElement',
     item: { id: CalcElementsEnum.OPERAND },
@@ -22,7 +25,7 @@ const OperandComponent: FC<IOperandComponentProps> = () => {
   );
 
   return (
-    <div className={s.container} ref={dragRef}>
+    <div className={`${s.container} ${isOperand && s.container_inactive}`} ref={!isOperand ? dragRef : null}>
       {buttons}
     </div>
   );
