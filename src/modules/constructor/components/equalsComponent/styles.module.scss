@@ -1,4 +1,10 @@
+@import '../../styles/mixins.module.scss';
+
 .container {
-  padding: 4px;
+  padding: 10px 4px;
   height: 72px;
+}
+
+.dropLine {
+  @include dropLine;
 }

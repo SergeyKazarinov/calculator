@@ -44,7 +44,7 @@ const ConstructorElement: FC<IConstructorElementProps> = () => {
         <EqualsComponent onDoubleClick={handleDoubleClick}/>));
 
   return (
-    <div className={`${s.container} ${(isHover && (!isDisplay && !(calcElements.length > 0))) && s.hoverDrop}`} ref={dropTarget}>
+    <div className={`${s.container} ${(isHover && !isDisplay && !(calcElements.length > 0)) && s.hoverDrop}`} ref={dropTarget}>
       {isDisplay && <DisplayComponent />}
       {elements}
       {(!isDisplay && !calcElements.length) && <ContainerComponent />}
