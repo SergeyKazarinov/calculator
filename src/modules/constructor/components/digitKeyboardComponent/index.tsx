@@ -21,7 +21,9 @@ const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = ({onDoubleClick
   };
 
   const buttons = DIGITS.map((item, index) =>
-    item === 0 ? <Button key={index} type="zero" title={item} disabled={true}/> : <Button key={index} type={CalcElementsEnum.DIGITS} title={item} disabled={true}/>,
+    item === 0 
+      ? <Button key={index} type="zero" title={item} disabled={checkbox}/> 
+      : <Button key={index} type={CalcElementsEnum.DIGITS} title={item} disabled={checkbox}/>,
   );
 
 

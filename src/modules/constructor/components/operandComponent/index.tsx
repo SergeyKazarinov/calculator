@@ -11,19 +11,19 @@ interface IOperandComponentProps {
 }
 
 const OperandComponent: FC<IOperandComponentProps> = ({onDoubleClick}) => {
-  const buttons = useMemo(
-    () => OPERANDS.map((item, index) => <Button key={index} type={CalcElementsEnum.OPERAND} title={item} disabled={true}/>),
-    [OPERANDS],
-  );
-  const {isHover, getItem, isDrag, dropTarget, dragRef} = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.OPERAND);
   const checkbox = useAppSelector(store => store.checkbox.checkbox);
-
+  const {isHover, getItem, isDrag, dropTarget, dragRef} = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.OPERAND);
+  
   const handleDoubleClick = (type: string) => {
     if (checkbox) {
       onDoubleClick(type);
     }
   };
-
+  
+  const buttons = useMemo(
+    () => OPERANDS.map((item, index) => <Button key={index} type={CalcElementsEnum.OPERAND} title={item} disabled={checkbox}/>),
+    [OPERANDS, checkbox],
+  );
   return (
     <div ref={checkbox ? dragRef : null}>
       <div

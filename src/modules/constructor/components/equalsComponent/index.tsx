@@ -26,7 +26,7 @@ const EqualsComponent: FC<IEqualsComponentProps> = ({onDoubleClick}) => {
         onDoubleClick={() => {handleDoubleClick(CalcElementsEnum.EQUALS)}}
         ref={dropTarget}
       >
-        <Button type={CalcElementsEnum.EQUALS} title={'='} disabled={true}/>
+        <Button type={CalcElementsEnum.EQUALS} title={'='} disabled={checkbox}/>
       </div>
     </div>
   );
