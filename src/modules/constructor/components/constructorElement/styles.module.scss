@@ -1,3 +1,5 @@
+@import '../../styles/mixins.module.scss';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,4 +7,8 @@
 
 .hoverDrop {
   background-color: #f0f9ff;
+}
+
+.dropLine {
+  @include dropLine;
 }

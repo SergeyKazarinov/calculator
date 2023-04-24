@@ -5,6 +5,10 @@
   display: flex;
   gap: 8px;
   height: 48px;
+
+  &_inactive {
+    opacity: 0.5;
+  }
 }
 
 .dropLine {

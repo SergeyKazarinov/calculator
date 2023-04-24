@@ -9,12 +9,12 @@ interface IEqualsComponentProps {
 }
 
 const EqualsComponent: FC<IEqualsComponentProps> = ({onDoubleClick}) => {
-  const {isHover, dropTarget, dragRef} = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.EQUALS);
+  const {isHover, isDrag, dropTarget, dragRef} = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.EQUALS);
 
   return (
     <div ref={dragRef}>
       <div
-        className={`${s.container} ${isHover && s.dropLine}`}
+        className={`${s.container} ${isDrag && s.container_inactive} ${isHover && s.dropLine}`}
         onDoubleClick={() => {onDoubleClick(CalcElementsEnum.EQUALS)}}
         ref={dropTarget}
       >

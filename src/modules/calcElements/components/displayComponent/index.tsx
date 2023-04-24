@@ -8,16 +8,13 @@ interface IDisplayComponentProps {}
 
 const DisplayComponent: FC<IDisplayComponentProps> = () => {
   const isDisplay = useAppSelector(store => store.calcElmts.isDisplay);
-  const [{ isDrag }, dragRef] = useDrag({
+  const [, dragRef] = useDrag({
     type: 'calcElement',
     item: { id: CalcElementsEnum.DISPLAY },
-    collect: (monitor) => ({
-      isDrag: monitor.isDragging(),
-    }),
   });
 
   return (
-    <div className={`${s.container} ${isDrag && s.dragging} ${isDisplay && s.container_inactive}`} ref={!isDisplay ? dragRef : null}>
+    <div className={`${s.container} ${isDisplay && s.container_inactive}`} ref={!isDisplay ? dragRef : null}>
       <div className={s.display}>0</div>
     </div>
   );

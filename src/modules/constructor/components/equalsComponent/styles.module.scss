@@ -3,6 +3,10 @@
 .container {
   padding: 10px 4px;
   height: 72px;
+  
+  &_inactive {
+    opacity: 0.5;
+  }
 }
 
 .dropLine {

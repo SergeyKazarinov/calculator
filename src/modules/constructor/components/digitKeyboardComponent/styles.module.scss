@@ -3,6 +3,10 @@
 .keyboard {
   padding: 10px 4px;
   position: relative;
+
+  &_inactive {
+    opacity: 0.5;
+  }
 }
 
 .grid {
