@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useAppDispatch } from 'services';
+import { useAppDispatch, useAppSelector } from 'services';
 import { calcElementsActions } from 'services/slices/calcElementsSlice';
 import s from './styles.module.scss';
 
@@ -9,8 +9,12 @@ interface IDisplayComponentProps {
 
 const DisplayComponent: FC<IDisplayComponentProps> = () => {
   const dispatch = useAppDispatch();
+  const checkbox = useAppSelector(store => store.checkbox.checkbox);
+
   const handleClick = () => {
-    dispatch(calcElementsActions.setDisplay(false));
+    if(checkbox) {
+      dispatch(calcElementsActions.setDisplay(false));
+    }
   };
   return (
     <div className={`${s.container}`} onDoubleClick={handleClick}>

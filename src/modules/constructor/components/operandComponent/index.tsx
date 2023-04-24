@@ -3,6 +3,7 @@ import { OPERANDS } from 'modules/calcElements/utils/constants';
 import { Button } from 'UI';
 import CalcElementsEnum from 'types/calcElementsEnum';
 import useDragAndDrop from 'modules/constructor/hooks/useDragAndDrop';
+import { useAppSelector } from 'services';
 import s from './styles.module.scss';
 
 interface IOperandComponentProps {
@@ -15,12 +16,19 @@ const OperandComponent: FC<IOperandComponentProps> = ({onDoubleClick}) => {
     [OPERANDS],
   );
   const {isHover, getItem, isDrag, dropTarget, dragRef} = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.OPERAND);
+  const checkbox = useAppSelector(store => store.checkbox.checkbox);
+
+  const handleDoubleClick = (type: string) => {
+    if (checkbox) {
+      onDoubleClick(type);
+    }
+  };
 
   return (
-    <div ref={dragRef}>
+    <div ref={checkbox ? dragRef : null}>
       <div
         className={`${s.container} ${isDrag && s.container_inactive} ${isHover && getItem.id !== CalcElementsEnum.DISPLAY && s.dropLine}`}
-        onDoubleClick={() => onDoubleClick(CalcElementsEnum.OPERAND)}
+        onDoubleClick={() => handleDoubleClick(CalcElementsEnum.OPERAND)}
         ref={dropTarget}
       >
         {buttons}
