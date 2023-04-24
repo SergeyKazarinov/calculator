@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook , useSelector , useDispatch } from 'react-redux';
 import calcElementsSlice from './slices/calcElementsSlice';
+import checkboxSlice from './slices/checkboxSlice';
 
 const rootReducer = combineReducers({
   calcElmts: calcElementsSlice,
+  checkbox: checkboxSlice,
 });
 
 export const store = configureStore({

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useAppSelector } from 'services';
 import s from './styles.module.scss';
 import DisplayComponent from '../displayComponent';
 import DigitKeyboardComponent from '../digitKeyboardComponent';
@@ -7,14 +8,16 @@ import EqualsComponent from '../equalsComponent';
 
 interface CalcElementsProps {}
 
-const CalcElements: FC<CalcElementsProps> = () => (
-  <div className={s.cardElements}>
-    <DisplayComponent />
-    <OperandComponent />
-    <DigitKeyboardComponent />
-    <EqualsComponent />
-  </div>
-);
+const CalcElements: FC<CalcElementsProps> = () => {
+  const checkbox = useAppSelector(store => store.checkbox.checkbox);
+  return(
+    <div className={`${s.cardElements} ${!checkbox && s.cardElements_inactive}`}>
+      <DisplayComponent />
+      <OperandComponent />
+      <DigitKeyboardComponent />
+      <EqualsComponent />
+    </div>
+  );};
 
 
 
