@@ -10,7 +10,7 @@ interface IDigitKeyboardComponentProps {
 }
 
 const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = ({onDoubleClick}) => {
-  const { isHover, dropTarget, dragRef, isDrag } = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.DIGITS);
+  const { isHover, getItem, dropTarget, dragRef, isDrag } = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.DIGITS);
 
 
   const buttons = DIGITS.map((item, index) =>
@@ -19,7 +19,7 @@ const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = ({onDoubleClick
 
 
   return (
-    <div className={`${s.keyboard} ${isHover && s.dropLine} ${isDrag && s.keyboard_inactive}`} ref={dropTarget}>
+    <div className={`${s.keyboard} ${isHover && getItem.id !== CalcElementsEnum.DISPLAY && s.dropLine} ${isDrag && s.keyboard_inactive}`} ref={dropTarget}>
       <div 
         className={`${s.grid}`}
         onDoubleClick={() => { onDoubleClick(CalcElementsEnum.DIGITS) }} 

@@ -25,13 +25,15 @@ const ConstructorElement: FC<IConstructorElementProps> = () => {
     }
   };
 
-  const [{ isHover }, dropTarget] = useDrop({
+  const [{ isHover, getItem, canDrop }, dropTarget] = useDrop({
     accept: 'calcElement',
     drop(item: { id: string }) {
       onDropHandler(item);
     },
     collect: (monitor) => ({
       isHover: monitor.isOver(),
+      getItem: monitor.getItem(),
+      canDrop: monitor.canDrop(),
     })
   });
 
@@ -40,15 +42,23 @@ const ConstructorElement: FC<IConstructorElementProps> = () => {
   };
 
   const elements = calcElements.map(value => (
-    (value === CalcElementsEnum.OPERAND) ? <OperandComponent key={CalcElementsEnum.OPERAND} onDoubleClick={handleDoubleClick}/> : 
-      (value === CalcElementsEnum.DIGITS) ? <DigitKeyboardComponent key={CalcElementsEnum.DIGITS} onDoubleClick={handleDoubleClick}/> : 
-        <EqualsComponent key={CalcElementsEnum.EQUALS} onDoubleClick={handleDoubleClick}/>));
+    (value === CalcElementsEnum.OPERAND) 
+      ? <OperandComponent key={CalcElementsEnum.OPERAND} onDoubleClick={handleDoubleClick}/> 
+      : (value === CalcElementsEnum.DIGITS) 
+        ? <DigitKeyboardComponent key={CalcElementsEnum.DIGITS} onDoubleClick={handleDoubleClick}/> 
+        : <EqualsComponent key={CalcElementsEnum.EQUALS} onDoubleClick={handleDoubleClick}/>));
 
   return (
-    <div className={`${s.container} ${(isHover && hasCalcElement) && s.hoverDrop}`} >
+    <div className={`${s.container} ${(isHover && !!hasCalcElement) && s.hoverDrop} ${canDrop && !isDisplay && !hasCalcElement && s.dropLine}`} >
       {isDisplay && <DisplayComponent />}
       {elements}
-      <ContainerComponent isHover={isHover} hasCalcElement={hasCalcElement} isDisplay={isDisplay} dropTarget={dropTarget}/>
+      <ContainerComponent 
+        isHover={isHover}
+        hasCalcElement={hasCalcElement}
+        isDisplay={isDisplay}
+        dropTarget={dropTarget} 
+        getItem={getItem}
+      />
     </div>
   );
 };

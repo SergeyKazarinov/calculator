@@ -6,7 +6,7 @@ import CalcElementsEnum from 'types/calcElementsEnum';
 
 const useDragAndDrop = (accept: string, type: string, id: string) => {
   const dispatch = useAppDispatch();
-  const [{isHover}, dropTarget] = useDrop({
+  const [{isHover, getItem}, dropTarget] = useDrop({
     accept,
     drop(item: {id: string}) {
       if (item.id === CalcElementsEnum.DISPLAY) {
@@ -17,6 +17,7 @@ const useDragAndDrop = (accept: string, type: string, id: string) => {
     },
     collect: (monitor) => ({
       isHover: monitor.isOver(),
+      getItem: monitor.getItem(),
     })
   });
 
@@ -27,7 +28,7 @@ const useDragAndDrop = (accept: string, type: string, id: string) => {
       isDrag: monitor.isDragging()
     })
   });
-  return {isHover, dropTarget, dragRef, isDrag};
+  return {isHover, getItem, dropTarget, dragRef, isDrag};
 };
 
 export default useDragAndDrop;

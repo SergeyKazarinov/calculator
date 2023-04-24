@@ -14,12 +14,12 @@ const OperandComponent: FC<IOperandComponentProps> = ({onDoubleClick}) => {
     () => OPERANDS.map((item, index) => <Button key={index} type={CalcElementsEnum.OPERAND} title={item} disabled={true}/>),
     [OPERANDS],
   );
-  const {isHover, isDrag, dropTarget, dragRef} = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.OPERAND);
+  const {isHover, getItem, isDrag, dropTarget, dragRef} = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.OPERAND);
 
   return (
     <div ref={dragRef}>
       <div
-        className={`${s.container} ${isDrag && s.container_inactive} ${isHover && s.dropLine}`}
+        className={`${s.container} ${isDrag && s.container_inactive} ${isHover && getItem.id !== CalcElementsEnum.DISPLAY && s.dropLine}`}
         onDoubleClick={() => onDoubleClick(CalcElementsEnum.OPERAND)}
         ref={dropTarget}
       >
