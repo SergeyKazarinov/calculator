@@ -16,7 +16,6 @@ const ConstructorElement: FC<IConstructorElementProps> = () => {
   const dispatch = useAppDispatch();
   const isDisplay = useAppSelector((store) => store.calcElmts.isDisplay);
   const calcElements = useAppSelector(store => store.calcElmts.calcElements);
-  const hasCalcElement = !isDisplay && !calcElements.length;
   const onDropHandler = (item: { id: string }) => {
     if (item.id === CalcElementsEnum.DISPLAY) {
       dispatch(calcElementsActions.setDisplay(true));
@@ -24,7 +23,7 @@ const ConstructorElement: FC<IConstructorElementProps> = () => {
       dispatch(calcElementsActions.addCalcElement(item.id));
     }
   };
-
+  
   const [{ isHover, getItem, canDrop }, dropTarget] = useDrop({
     accept: 'calcElement',
     drop(item: { id: string }) {
@@ -36,7 +35,10 @@ const ConstructorElement: FC<IConstructorElementProps> = () => {
       canDrop: monitor.canDrop(),
     })
   });
-
+  
+  const hasCalcElement = !isDisplay && !calcElements.length;
+  const isDropLine = canDrop && !isDisplay && getItem.id === CalcElementsEnum.DISPLAY;
+  
   const handleDoubleClick = (type: string) => {
     dispatch(calcElementsActions.removeCalcElement(type));
   };
@@ -49,7 +51,7 @@ const ConstructorElement: FC<IConstructorElementProps> = () => {
         : <EqualsComponent key={CalcElementsEnum.EQUALS} onDoubleClick={handleDoubleClick}/>));
 
   return (
-    <div className={`${s.container} ${(isHover && !!hasCalcElement) && s.hoverDrop} ${canDrop && !isDisplay && !hasCalcElement && s.dropLine}`} >
+    <div className={`${s.container} ${(isHover && !!hasCalcElement) && s.hoverDrop} ${isDropLine && s.dropLine}`} >
       {isDisplay && <DisplayComponent />}
       {elements}
       <ContainerComponent 
