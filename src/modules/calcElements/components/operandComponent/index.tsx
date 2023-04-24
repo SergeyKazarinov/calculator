@@ -11,7 +11,7 @@ interface IOperandComponentProps {}
 const OperandComponent: FC<IOperandComponentProps> = () => {
   const calcElements = useAppSelector(store => store.calcElmts.calcElements);
   const isOperand = calcElements.some(item => item === CalcElementsEnum.OPERAND);
-  const [, dragRef] = useDrag({
+  const [{isDrag}, dragRef] = useDrag({
     type: 'calcElement',
     item: { id: CalcElementsEnum.OPERAND },
     collect: (monitor) => ({
@@ -25,7 +25,7 @@ const OperandComponent: FC<IOperandComponentProps> = () => {
   );
 
   return (
-    <div className={`${s.container} ${isOperand && s.container_inactive}`} ref={!isOperand ? dragRef : null}>
+    <div className={`${s.container} ${(isOperand || isDrag) && s.container_inactive}`} ref={!isOperand ? dragRef : null}>
       {buttons}
     </div>
   );

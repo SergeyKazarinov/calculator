@@ -11,7 +11,7 @@ interface IDigitKeyboardComponentProps {}
 const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = () => {
   const calcElements = useAppSelector(store => store.calcElmts.calcElements);
   const isDigits = calcElements.some(item => item === CalcElementsEnum.DIGITS);
-  const [, dragRef] = useDrag({
+  const [{isDrag}, dragRef] = useDrag({
     type: 'calcElement',
     item: { id: CalcElementsEnum.DIGITS },
     collect: (monitor) => ({
@@ -28,7 +28,7 @@ const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = () => {
   );
 
   return (
-    <div className={`${s.keyboard} ${s.grid} ${isDigits && s.grid_inactive}`} ref={!isDigits ? dragRef : null}>
+    <div className={`${s.keyboard} ${s.grid} ${(isDigits || isDrag) && s.grid_inactive}`} ref={!isDigits ? dragRef : null}>
       {buttons}
     </div>
   );

@@ -10,7 +10,7 @@ interface IEqualsComponentProps {}
 const EqualsComponent: FC<IEqualsComponentProps> = () => {
   const caltElement = useAppSelector(store => store.calcElmts.calcElements);
   const isEquals = caltElement.some(i => i === CalcElementsEnum.EQUALS);
-  const [, dragRef] = useDrag({
+  const [{isDrag}, dragRef] = useDrag({
     type: 'calcElement',
     item: { id: CalcElementsEnum.EQUALS },
     collect: (monitor) => ({
@@ -19,7 +19,7 @@ const EqualsComponent: FC<IEqualsComponentProps> = () => {
   });
 
   return (
-    <div className={`${s.container} ${isEquals && s.container_inactive}`} ref={!isEquals ? dragRef : null}>
+    <div className={`${s.container} ${(isEquals || isDrag) && s.container_inactive}`} ref={!isEquals ? dragRef : null}>
       <Button type={CalcElementsEnum.EQUALS} title={'='} disabled={true} />
     </div>
   );
