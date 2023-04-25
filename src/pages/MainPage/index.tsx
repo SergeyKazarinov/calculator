@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Checkbox } from 'modules/checkBoxConstructor';
-import { CalcElements } from 'modules/calcElements';
+import Checkbox from 'modules/checkBoxConstructor';
+import CalcElements from 'modules/calcElements';
 import { ConstructorElement } from 'modules/constructor';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';

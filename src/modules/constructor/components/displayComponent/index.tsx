@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { useAppDispatch, useAppSelector } from 'services';
-import { calcElementsActions } from 'services/slices/calcElementsSlice';
+import { calcElementsActions } from 'store/slices/calcElementsSlice';
+import { useAppDispatch, useAppSelector } from 'store';
 import s from './styles.module.scss';
 
 interface IDisplayComponentProps {
@@ -8,11 +8,13 @@ interface IDisplayComponentProps {
 }
 
 const DisplayComponent: FC<IDisplayComponentProps> = () => {
+  // const calcDisplay = useAppCalcSelector(store => store.calculator.display);
   const dispatch = useAppDispatch();
-  const checkbox = useAppSelector(store => store.checkbox.checkbox);
+  const checkbox = useAppSelector((store) => store.checkbox.checkbox);
+  // const calcDisplay = useAppSelector(store => store.calculator.display);
 
   const handleClick = () => {
-    if(checkbox) {
+    if (checkbox) {
       dispatch(calcElementsActions.setDisplay(false));
     }
   };

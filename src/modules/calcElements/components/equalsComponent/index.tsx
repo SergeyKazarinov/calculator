@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { Button } from 'UI';
 import { useDrag } from 'react-dnd';
-import { useAppSelector } from 'services';
+import { useAppSelector } from 'store';
 import CalcElementsEnum from 'types/calcElementsEnum';
 import s from './styles.module.scss';
 
 interface IEqualsComponentProps {}
 
 const EqualsComponent: FC<IEqualsComponentProps> = () => {
-  const caltElement = useAppSelector(store => store.calcElmts.calcElements);
-  const isEquals = caltElement.some(i => i === CalcElementsEnum.EQUALS);
-  const [{isDrag}, dragRef] = useDrag({
+  const caltElement = useAppSelector((store) => store.calcElmts.calcElements);
+  const isEquals = caltElement.some((i) => i === CalcElementsEnum.EQUALS);
+  const [{ isDrag }, dragRef] = useDrag({
     type: 'calcElement',
     item: { id: CalcElementsEnum.EQUALS },
     collect: (monitor) => ({

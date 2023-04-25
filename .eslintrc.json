@@ -5,8 +5,7 @@
   },
   "extends": [
     "airbnb-base",
-    "airbnb-typescript/base",
-    "prettier"
+    "airbnb-typescript/base"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -16,17 +15,14 @@
     "project": "./tsconfig.json"
   },
   "plugins": [
-    "import",
-    "prettier"
+    "import"
   ],
   "rules": {
     "import/no-unresolved": "error",
-    "import/prefer-default-export": ["warn", { "target": "single" }],
-    "import/no-extraneous-dependencies": 0,
-    // "implicit-arrow-linebreak": 0,
-    "linebreak-style": 0,
+    // "import/no-extraneous-dependencies": 0,
+    // "linebreak-style": 0,
     "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }],
-    "no-nested-ternary": 0,
+    // "no-nested-ternary": 0,
     "indent": ["error", 2],
     "quotes": ["error", "single"],
     "semi": ["error", "always", {"omitLastInOneLineBlock": true}]

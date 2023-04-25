@@ -9,21 +9,24 @@ interface IContainerComponentProps {
   hasCalcElement: boolean;
   isDisplay: boolean;
   dropTarget: ConnectDropTarget;
-  getItem: {id: string};
+  getItem: { id: string };
 }
 
-const ContainerComponent: FC<IContainerComponentProps> = ({isHover, hasCalcElement, dropTarget, getItem}) => {
+const ContainerComponent: FC<IContainerComponentProps> = ({
+  isHover, hasCalcElement, dropTarget, getItem,
+}) => {
   const isDropLine = !hasCalcElement && isHover && getItem.id !== CalcElementsEnum.DISPLAY;
-  
+
   return (
-    <div 
-      className={`${s.container} ${isDropLine && s.container_dropLine} ${!hasCalcElement && s.container_inactive}`} 
+    <div
+      className={`${s.container} ${isDropLine && s.container_dropLine} ${!hasCalcElement && s.container_inactive}`}
       ref={dropTarget}
     >
       {hasCalcElement && <img src={icon} alt="Иконка добавления картинки" />}
       {hasCalcElement && <h2 className={`title ${s.title}`}>Перетащите сюда</h2>}
       {hasCalcElement && <p className={`title ${s.subtitle}`}>любой элемент из левой панели</p>}
     </div>
-  );};
+  );
+};
 
 export default ContainerComponent;

@@ -3,25 +3,31 @@ import { OPERANDS } from 'modules/calcElements/utils/constants';
 import { Button } from 'UI';
 import CalcElementsEnum from 'types/calcElementsEnum';
 import useDragAndDrop from 'modules/constructor/hooks/useDragAndDrop';
-import { useAppSelector } from 'services';
+import { useAppSelector } from 'store';
 import s from './styles.module.scss';
 
 interface IOperandComponentProps {
   onDoubleClick: (type: string) => void;
 }
 
-const OperandComponent: FC<IOperandComponentProps> = ({onDoubleClick}) => {
-  const checkbox = useAppSelector(store => store.checkbox.checkbox);
-  const {isHover, getItem, isDrag, dropTarget, dragRef} = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.OPERAND);
-  
+const OperandComponent: FC<IOperandComponentProps> = ({ onDoubleClick }) => {
+  const checkbox = useAppSelector((store) => store.checkbox.checkbox);
+  const {
+    isHover, getItem, isDrag, dropTarget, dragRef,
+  } = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.OPERAND);
+
   const handleDoubleClick = (type: string) => {
     if (checkbox) {
       onDoubleClick(type);
     }
   };
-  
+
   const buttons = useMemo(
-    () => OPERANDS.map((item, index) => <Button key={index} type={CalcElementsEnum.OPERAND} title={item} disabled={checkbox}/>),
+    () => OPERANDS.map(
+      (item, index) => (
+        <Button key={index} type={CalcElementsEnum.OPERAND} title={item} disabled={checkbox}/>
+      ),
+    ),
     [OPERANDS, checkbox],
   );
   return (
