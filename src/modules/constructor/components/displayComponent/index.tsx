@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { calcElementsActions } from 'store/slices/calcElementsSlice';
 import { useAppDispatch, useAppSelector } from 'store';
+import { calcActions } from 'modules/constructor/store/calcSlice';
 import s from './styles.module.scss';
 
 interface IDisplayComponentProps {
@@ -8,10 +9,15 @@ interface IDisplayComponentProps {
 }
 
 const DisplayComponent: FC<IDisplayComponentProps> = () => {
-  // const calcDisplay = useAppCalcSelector(store => store.calculator.display);
   const dispatch = useAppDispatch();
   const checkbox = useAppSelector((store) => store.checkbox.checkbox);
-  // const calcDisplay = useAppSelector(store => store.calculator.display);
+  const calcDisplay = useAppSelector((store) => store.calculator.display);
+
+  useEffect(() => {
+    if (checkbox) {
+      dispatch(calcActions.clearDisplay());
+    }
+  }, [checkbox]);
 
   const handleClick = () => {
     if (checkbox) {
@@ -20,7 +26,7 @@ const DisplayComponent: FC<IDisplayComponentProps> = () => {
   };
   return (
     <div className={`${s.container}`} onDoubleClick={handleClick}>
-      <div className={s.display}>0</div>
+      <div className={s.display}>{calcDisplay}</div>
     </div>
   );
 };

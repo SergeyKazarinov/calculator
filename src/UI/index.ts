@@ -1,4 +1,2 @@
-import Button from './Button';
-import Loader from './Loader';
-
-export { Button, Loader };
+export { default as Button } from './Button';
+export { default as Loader } from './Loader';

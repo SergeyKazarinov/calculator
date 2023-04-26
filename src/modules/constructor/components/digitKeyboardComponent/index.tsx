@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import { DIGITS } from 'modules/calcElements/utils/constants';
 import { Button } from 'UI';
 import CalcElementsEnum from 'types/calcElementsEnum';
 import useDragAndDrop from 'modules/constructor/hooks/useDragAndDrop';
-import { useAppSelector } from 'store';
+import { useAppDispatch, useAppSelector } from 'store';
+import { calcActions } from 'modules/constructor/store/calcSlice';
+import { DIGITS } from 'modules/constructor/utils/constants';
 import s from './styles.module.scss';
 
 interface IDigitKeyboardComponentProps {
@@ -15,6 +16,7 @@ const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = ({ onDoubleClic
     isHover, getItem, dropTarget, dragRef, isDrag,
   } = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.DIGITS);
   const checkbox = useAppSelector((store) => store.checkbox.checkbox);
+  const dispatch = useAppDispatch();
 
   const handleDoubleClick = (type: string) => {
     if (checkbox) {
@@ -22,9 +24,19 @@ const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = ({ onDoubleClic
     }
   };
 
+  const handleClick = (number: string) => {
+    dispatch(calcActions.setTheFirstNumber(number));
+  };
+
   const buttons = DIGITS.map((item, index) => (item === 0
-    ? <Button key={index} type="zero" title={item} disabled={checkbox}/>
-    : <Button key={index} type={CalcElementsEnum.DIGITS} title={item} disabled={checkbox}/>));
+    ? <Button key={index} type="zero" title={item} disabled={checkbox} onClick={handleClick}/>
+    : <Button
+      key={index}
+      type={CalcElementsEnum.DIGITS}
+      title={item}
+      disabled={checkbox}
+      onClick={handleClick}
+    />));
 
   return (
     <div className={`${s.keyboard} ${isHover && getItem.id !== CalcElementsEnum.DISPLAY && s.dropLine} ${isDrag && s.keyboard_inactive}`} ref={dropTarget}>

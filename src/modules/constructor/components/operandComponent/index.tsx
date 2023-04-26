@@ -1,9 +1,9 @@
 import { FC, useMemo } from 'react';
-import { OPERANDS } from 'modules/calcElements/utils/constants';
 import { Button } from 'UI';
 import CalcElementsEnum from 'types/calcElementsEnum';
 import useDragAndDrop from 'modules/constructor/hooks/useDragAndDrop';
 import { useAppSelector } from 'store';
+import { OPERANDS } from 'modules/constructor/utils/constants';
 import s from './styles.module.scss';
 
 interface IOperandComponentProps {
@@ -22,10 +22,20 @@ const OperandComponent: FC<IOperandComponentProps> = ({ onDoubleClick }) => {
     }
   };
 
+  const handleClick = (number: string) => {
+    console.log(number);
+  };
+
   const buttons = useMemo(
     () => OPERANDS.map(
       (item, index) => (
-        <Button key={index} type={CalcElementsEnum.OPERAND} title={item} disabled={checkbox}/>
+        <Button
+          key={index}
+          type={CalcElementsEnum.OPERAND}
+          title={item}
+          disabled={checkbox}
+          onClick={handleClick}
+        />
       ),
     ),
     [OPERANDS, checkbox],
