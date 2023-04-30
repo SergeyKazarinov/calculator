@@ -2,8 +2,9 @@ import { FC, useMemo } from 'react';
 import { Button } from 'UI';
 import CalcElementsEnum from 'types/calcElementsEnum';
 import useDragAndDrop from 'modules/constructor/hooks/useDragAndDrop';
-import { useAppSelector } from 'store';
+import { useAppDispatch, useAppSelector } from 'store';
 import { OPERANDS } from 'modules/constructor/utils/constants';
+import { calcActions } from 'modules/constructor/store/calcSlice';
 import s from './styles.module.scss';
 
 interface IOperandComponentProps {
@@ -11,6 +12,7 @@ interface IOperandComponentProps {
 }
 
 const OperandComponent: FC<IOperandComponentProps> = ({ onDoubleClick }) => {
+  const dispatch = useAppDispatch();
   const checkbox = useAppSelector((store) => store.checkbox.checkbox);
   const {
     isHover, getItem, isDrag, dropTarget, dragRef,
@@ -22,8 +24,8 @@ const OperandComponent: FC<IOperandComponentProps> = ({ onDoubleClick }) => {
     }
   };
 
-  const handleClick = (number: string) => {
-    console.log(number);
+  const handleClick = (operator: string) => {
+    dispatch(calcActions.setOperator(operator));
   };
 
   const buttons = useMemo(

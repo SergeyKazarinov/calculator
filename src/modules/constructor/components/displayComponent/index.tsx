@@ -15,7 +15,7 @@ const DisplayComponent: FC<IDisplayComponentProps> = () => {
 
   useEffect(() => {
     if (checkbox) {
-      dispatch(calcActions.clearDisplay());
+      dispatch(calcActions.clearCalculator());
     }
   }, [checkbox]);
 

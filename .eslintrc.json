@@ -25,7 +25,9 @@
     // "no-nested-ternary": 0,
     "indent": ["error", 2],
     "quotes": ["error", "single"],
-    "semi": ["error", "always", {"omitLastInOneLineBlock": true}]
+    "semi": ["error", "always", {"omitLastInOneLineBlock": true}],
+    "indent": ["error", 2, { "SwitchCase": 1 }]
+
   },
   "settings": {
     "import/parsers": {

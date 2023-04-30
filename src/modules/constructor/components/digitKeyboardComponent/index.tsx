@@ -25,7 +25,7 @@ const DigitKeyboardComponent: FC<IDigitKeyboardComponentProps> = ({ onDoubleClic
   };
 
   const handleClick = (number: string) => {
-    dispatch(calcActions.setTheFirstNumber(number));
+    dispatch(calcActions.setNumber(number));
   };
 
   const buttons = DIGITS.map((item, index) => (item === 0
