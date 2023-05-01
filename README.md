@@ -17,7 +17,7 @@
 
 Приложение имеет модульную архитектуру.
 
-[Ссылка на сайт](https://sergeykazarinov.github.io/)
+[Ссылка на сайт](https://sergeykazarinov.github.io/calculator/)
 
 ## Быстрый старт
 
@@ -26,7 +26,7 @@
 1. Склонировать проект на свой компьютер
 
 ```bash
-git clone https://github.com/SergeyKazarinov/calculator-drag-and-drop-.git
+git clone https://github.com/SergeyKazarinov/calculator.git
 ```
 
 2. Перейти в папку с проектом и установить зависимости в проекте
