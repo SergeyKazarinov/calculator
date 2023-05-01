@@ -2,7 +2,8 @@ import { FC } from 'react';
 import { Button } from 'UI';
 import CalcElementsEnum from 'types/calcElementsEnum';
 import useDragAndDrop from 'modules/constructor/hooks/useDragAndDrop';
-import { useAppSelector } from 'store';
+import { useAppDispatch, useAppSelector } from 'store';
+import { calcActions } from 'modules/constructor/store/calcSlice';
 import s from './styles.module.scss';
 
 interface IEqualsComponentProps {
@@ -14,11 +15,16 @@ const EqualsComponent: FC<IEqualsComponentProps> = ({ onDoubleClick }) => {
     isHover, getItem, isDrag, dropTarget, dragRef,
   } = useDragAndDrop('calcElement', 'calcElement', CalcElementsEnum.EQUALS);
   const checkbox = useAppSelector((store) => store.checkbox.checkbox);
+  const dispatch = useAppDispatch();
 
   const handleDoubleClick = (type: string) => {
     if (checkbox) {
       onDoubleClick(type);
     }
+  };
+
+  const handleClick = () => {
+    dispatch(calcActions.setEqualNumber());
   };
 
   return (
@@ -30,7 +36,7 @@ const EqualsComponent: FC<IEqualsComponentProps> = ({ onDoubleClick }) => {
         }}
         ref={dropTarget}
       >
-        <Button type={CalcElementsEnum.EQUALS} title={'='} disabled={checkbox}/>
+        <Button type={CalcElementsEnum.EQUALS} title={'='} disabled={checkbox} onClick={handleClick}/>
       </div>
     </div>
   );

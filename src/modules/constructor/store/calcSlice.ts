@@ -1,43 +1,16 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { OPERANDS } from '../utils/constants';
+import { OPERANDS, UNDEFINED } from '../utils/constants';
+import getCalcResult from '../helpers/getCalcResult';
+import replaceNumber from '../helpers/replaceNumber';
+import refactResult from '../helpers/refactResult';
 
 interface ICalcSlice {
   display: string;
   theFirstNumber: null | number;
-  theSecondNumber: null | number;
-  oprtr: string;
+  oprtr: string | null;
   calcResult: number | null;
   calcCash: string;
 }
-
-const getCalcResult = (theFirstNumber: number, oprtr: string, theSecondNumber: number) => {
-  let result;
-  switch (oprtr) {
-    case '+':
-      result = theFirstNumber + theSecondNumber;
-      break;
-    case '-':
-      result = theFirstNumber - theSecondNumber;
-      break;
-    case 'x':
-      result = theFirstNumber * theSecondNumber;
-      break;
-    case '/':
-      result = theFirstNumber / theSecondNumber;
-      break;
-    default:
-      result = Infinity;
-  }
-
-  if (String(result).length > 8 && !String(result).includes('.')) {
-    result = result.toExponential(5);
-    console.log(result);
-  }
-  if (String(result).includes('.')) {
-    result = Number(result).toFixed(8);
-  }
-  return Number(result);
-};
 
 const calcSlice = createSlice({
   name: 'calcSlice',
@@ -54,8 +27,7 @@ const calcSlice = createSlice({
       state.calcResult = null;
       state.display = '0';
       state.theFirstNumber = null;
-      state.oprtr = '';
-      state.theSecondNumber = null;
+      state.oprtr = null;
       state.calcCash = '';
     },
     setNumber(state, action: PayloadAction<string>) {
@@ -68,14 +40,14 @@ const calcSlice = createSlice({
       } else if (state.display.length < 9 && !(state.display.includes(',') && action.payload === ',')) {
         state.display += action.payload;
       }
-      state.calcCash += action.payload;
 
-      console.log(state.calcCash);
+      if (state.display === UNDEFINED || state.calcCash.slice(-1) === '=') {
+        state.display = action.payload;
+      }
+      state.calcCash += action.payload;
     },
     setOperator(state, action: PayloadAction<string>) {
-      if (state.display.includes(',')) {
-        state.display = state.display.replace(',', '.');
-      }
+      state.display = replaceNumber(state.display);
       if (!state.theFirstNumber) {
         state.theFirstNumber = Number(state.display);
         state.oprtr = action.payload;
@@ -86,18 +58,34 @@ const calcSlice = createSlice({
       ) {
         state.oprtr = action.payload;
       } else {
-        state.calcResult = getCalcResult(state.theFirstNumber, state.oprtr, Number(state.display));
+        state.calcResult = getCalcResult(state.theFirstNumber, state.oprtr!, Number(state.display));
+        console.log(state.calcResult);
         if (state.calcResult === Infinity) {
-          state.display = 'Не определено';
-          state.oprtr = '';
+          state.display = UNDEFINED;
+          state.oprtr = null;
           state.theFirstNumber = null;
         } else {
           state.oprtr = action.payload;
           state.theFirstNumber = state.calcResult;
-          state.display = String(state.calcResult).replace('.', ',');
+          state.display = refactResult(state.calcResult);
         }
       }
       state.calcCash += action.payload;
+    },
+    setEqualNumber(state) {
+      state.display = replaceNumber(state.display);
+
+      if (state.oprtr && state.theFirstNumber) {
+        state.calcResult = getCalcResult(state.theFirstNumber, state.oprtr, Number(state.display));
+        state.display = refactResult(state.calcResult);
+
+        if (state.calcResult === Infinity) {
+          state.display = UNDEFINED;
+        }
+      }
+      state.theFirstNumber = null;
+      state.oprtr = null;
+      state.calcCash += '=';
     },
   },
 });
