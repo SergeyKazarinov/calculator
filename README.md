@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Проект: Calculatro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='./src/images/preview.jpg' width="70%">
 
-## Available Scripts
+## Описание:
 
-In the project directory, you can run:
+Проект представляет собой drag-and-drop конструктор, с помощью которого можно собрать калькулятор.  
+Правая часть экрана - холст. На холст можно бросать компоненты из палитры. При перетаскивании светится зона, куда вставится элемент.  
+Каждый элемент можно бросить на холст только один раз, затем они становятся неактивными.
+Элемент удаляется с холста по dblclick.
 
-### `npm start`
+### **Переключатель** между режимом конструктора и runtime
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- в режиме конструктора можно собирать интерфейс, но при нажатии на кнопки, они ничего не делают.
+- в режиме runtime перетаскивать ничего нельзя (сайдбар скрывается), но работает калькулятор. Нажимаем на кнопки и видим результат на дисплее.
+- переключение сбрасывает состояние дисплея.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Приложение имеет модульную архитектуру.
 
-### `npm test`
+[Ссылка на сайт](https://sergeykazarinov.github.io/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Быстрый старт
 
-### `npm run build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Склонировать проект на свой компьютер
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/SergeyKazarinov/calculator-drag-and-drop-.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Перейти в папку с проектом и установить зависимости в проекте
 
-### `npm run eject`
+```bash
+cd calculator-drag-and-drop-
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Запустить проект
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Stacks:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- TypeScript
+- React.js
+- React-dnd
+- Redux Toolkit
+- Sass Module
+- Eslint

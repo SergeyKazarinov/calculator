@@ -12,6 +12,10 @@
   font-size: 36px;
   line-height: 44px;
   box-sizing: border-box;
+
+  &_undefined {
+    font-size: 24px;
+  }
 }
 
 .hover {

@@ -59,7 +59,6 @@ const calcSlice = createSlice({
         state.oprtr = action.payload;
       } else {
         state.calcResult = getCalcResult(state.theFirstNumber, state.oprtr!, Number(state.display));
-        console.log(state.calcResult);
         if (state.calcResult === Infinity) {
           state.display = UNDEFINED;
           state.oprtr = null;

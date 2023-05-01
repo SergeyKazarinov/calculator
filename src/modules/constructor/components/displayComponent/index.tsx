@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react';
 import { calcElementsActions } from 'store/slices/calcElementsSlice';
 import { useAppDispatch, useAppSelector } from 'store';
 import { calcActions } from 'modules/constructor/store/calcSlice';
+import { UNDEFINED } from 'modules/constructor/utils/constants';
 import s from './styles.module.scss';
 
 interface IDisplayComponentProps {
@@ -26,7 +27,7 @@ const DisplayComponent: FC<IDisplayComponentProps> = () => {
   };
   return (
     <div className={`${s.container}`} onDoubleClick={handleClick}>
-      <div className={s.display}>{calcDisplay}</div>
+      <div className={`${s.display} ${calcDisplay === UNDEFINED && s.display_undefined}`}>{calcDisplay}</div>
     </div>
   );
 };
