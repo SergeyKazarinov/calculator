@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/calculator-drag-and-drop-/static/css/main.f60e124b.css",
-    "main.js": "/calculator-drag-and-drop-/static/js/main.27bffe76.js",
+    "main.js": "/calculator-drag-and-drop-/static/js/main.52276da5.js",
     "static/css/526.e75edd55.chunk.css": "/calculator-drag-and-drop-/static/css/526.e75edd55.chunk.css",
     "static/js/526.6216c04f.chunk.js": "/calculator-drag-and-drop-/static/js/526.6216c04f.chunk.js",
     "static/css/922.a567aee9.chunk.css": "/calculator-drag-and-drop-/static/css/922.a567aee9.chunk.css",
@@ -18,7 +18,7 @@
     "static/media/icon.svg": "/calculator-drag-and-drop-/static/media/icon.ff2a0d409c14819260b08f919e659b64.svg",
     "index.html": "/calculator-drag-and-drop-/index.html",
     "main.f60e124b.css.map": "/calculator-drag-and-drop-/static/css/main.f60e124b.css.map",
-    "main.27bffe76.js.map": "/calculator-drag-and-drop-/static/js/main.27bffe76.js.map",
+    "main.52276da5.js.map": "/calculator-drag-and-drop-/static/js/main.52276da5.js.map",
     "526.e75edd55.chunk.css.map": "/calculator-drag-and-drop-/static/css/526.e75edd55.chunk.css.map",
     "526.6216c04f.chunk.js.map": "/calculator-drag-and-drop-/static/js/526.6216c04f.chunk.js.map",
     "922.a567aee9.chunk.css.map": "/calculator-drag-and-drop-/static/css/922.a567aee9.chunk.css.map",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.f60e124b.css",
-    "static/js/main.27bffe76.js"
+    "static/js/main.52276da5.js"
   ]
 }
