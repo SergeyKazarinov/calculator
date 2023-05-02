@@ -19,11 +19,7 @@
   ],
   "rules": {
     "import/no-unresolved": "error",
-    // "import/no-extraneous-dependencies": 0,
-    // "linebreak-style": 0,
     "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }],
-    // "no-nested-ternary": 0,
-    "indent": ["error", 2],
     "quotes": ["error", "single"],
     "semi": ["error", "always", {"omitLastInOneLineBlock": true}],
     "indent": ["error", 2, { "SwitchCase": 1 }]
